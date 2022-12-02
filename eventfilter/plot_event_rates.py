@@ -1,12 +1,24 @@
 import numpy as np
 import copy
 import matplotlib.pyplot as plt
+import sys
+import os
 
 if __name__ == '__main__':
 
-    # Take in name of the file
-    fname = './sampledata/0.txt'
+     # check if incorrect input sequence
+    if len(sys.argv) != 2:
+        print("error: incorrect Input!\nInput in the form of:\npython3 event_filter.py <input.txt>")
+        sys.exit(1)
 
+    # Take in name of the file
+    fname = sys.argv[1]
+
+    # check if incorrect filename
+    if not os.path.isfile(fname):
+        print("error: {} does not exist".format(fname))
+        sys.exit(1)
+    
     # Open the input file and store lines in matrix
     with open(fname) as f:
         lines = f.readlines()
@@ -15,7 +27,7 @@ if __name__ == '__main__':
     data = np.zeros(len(lines), dtype=object)
     window = copy.deepcopy(data)
 
-    # parameters and variables
+    # PARAMETER VARIABLES
     reference_time = 0
     delta_t = 10**3
 
@@ -52,12 +64,24 @@ if __name__ == '__main__':
             on_event_count = 0
             off_event_count = 0
             temp_window = np.array([])
-
+    # delete the initial row of zeros
     time_series = time_series[1:]
     print(time_series)
+
+    # Plot The event rates over time
     x = np.arange(np.shape(time_series)[0])
     y = time_series[:, 2]
-    plt.plot(x, y)
+    plt.plot(x, y, label="total event rate")
+
+    y = time_series[:, 1]
+    plt.plot(x, y, label="off event rate")
+
+    y = time_series[:, 0]
+    plt.plot(x, y, label="on event rate")
+  
+    plt.xlabel('time t')
+    plt.ylabel('Event Rate')
+    plt.title('Event Rate vs. Time')
+    plt.legend()
     plt.show()
-    
-    
+    plt.savefig('oof.png')
