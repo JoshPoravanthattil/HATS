@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import sys
 import os
 
+# my name is joshua
+
 if __name__ == '__main__':
     # check if incorrect input sequence
     if len(sys.argv) != 2:
