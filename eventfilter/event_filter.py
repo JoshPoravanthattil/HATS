@@ -37,7 +37,7 @@ if __name__ == '__main__':
     off_event_count = 0
     on_event_count_total = 0
     off_event_count_total = 0
-    std_multiplier = 1
+    std_multiplier = 0.25
 
     numvars = 3
     # (on event, off event, total) <- event rates formatting
@@ -93,45 +93,6 @@ if __name__ == '__main__':
         for line in filtered_data:
             f.write(str(" ".join([str(x) for x in line])))
             f.write("\n")
-
-    # # HOW TO SAVE NUMPY FILE TO TEXT
-    # np.savetxt('test.txt', data, fmt='%s', delimiter=' ')
-
-
-    # ORIGINAL IDEA
-    # # WINDOWING COMMENCE
-    # # parameters
-    # sliding_window_length = 10
-    # percentile_threshold = 80
-
-    # window = np.array(np.zeros(sliding_window_length))
-    # cumulative_std = np.array([])
-    # on_cumulative_std = np.array([])
-    # off_cumulative_std = np.array([])
-
-    # # (on event, off event, total) <- event rates formatting
-    # start_index = 0
-    # while True:
-    #     # check if windowing has reached end of the array
-    #     if start_index + sliding_window_length >= np.shape(time_series)[0]:
-    #         cumulative_std = np.append(cumulative_std, np.std(time_series[start_index:, 2]))
-            
-    #         break
-        
-    #     cumulative_std = np.append(cumulative_std, np.std(time_series[start_index:start_index+sliding_window_length, 2]))
-    #     start_index = start_index + sliding_window_length
-
-    # print(cumulative_std)
-
-    # # plot the histogram of standard deviations
-    # plt.hist(cumulative_std, bins='auto')
-    # plt.show()
-
-    # # calculate max standard deviations in list
-    # thresh = np.percentile(cumulative_std, percentile_threshold)
-    # locations = np.where(cumulative_std >= thresh)
-
-    # for ind in locations:
 
 
 
