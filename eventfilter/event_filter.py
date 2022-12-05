@@ -32,12 +32,12 @@ if __name__ == '__main__':
     # PARAMETER VARIABLES
     reference_time = 0
     delta_t = 10**3
+    std_multiplier = 0.1
 
     on_event_count = 0
     off_event_count = 0
     on_event_count_total = 0
     off_event_count_total = 0
-    std_multiplier = 0.25
 
     numvars = 3
     # (on event, off event, total) <- event rates formatting
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     calc_std = np.std(time_series[:, 2])
     calc_mean = np.mean(time_series[:, 2])
     delete_indices = np.where(time_series[:, 2] > calc_std*std_multiplier)[0]
-
+    print(calc_mean, calc_std, 0.1*calc_std)
     final_deleted_indices = np.array([], dtype=int)
 
     for i in delete_indices:
