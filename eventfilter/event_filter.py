@@ -37,7 +37,7 @@ if __name__ == '__main__':
     off_event_count = 0
     on_event_count_total = 0
     off_event_count_total = 0
-    std_multiplier = 1
+    std_multiplier = 0.1
 
     numvars = 3
     # (on event, off event, total) <- event rates formatting

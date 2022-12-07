@@ -79,9 +79,15 @@ if __name__ == '__main__':
     y = time_series[:, 0]
     plt.plot(x, y, label="on event rate")
   
-    plt.xlabel('time t')
+    plt.xlabel('time t (ms)')
     plt.ylabel('Event Rate')
     plt.title('Event Rate vs. Time')
     plt.legend()
     plt.show()
-    plt.savefig('oof.png')
+    # plt.savefig('oof.png')
+
+    plt.xlabel('Event Rate')
+    plt.ylabel('Count')
+    plt.title('Event Rate Histogram')
+    plt.hist(time_series[:, 2], bins=20)
+    plt.show()
