@@ -32,12 +32,16 @@ if __name__ == '__main__':
     # PARAMETER VARIABLES
     reference_time = 0
     delta_t = 10**3
+    std_multiplier = 0.1
 
     on_event_count = 0
     off_event_count = 0
     on_event_count_total = 0
     off_event_count_total = 0
+<<<<<<< HEAD
     std_multiplier = 0.1
+=======
+>>>>>>> a2b03500902a0023e3327eb33607e7281759abe2
 
     numvars = 3
     # (on event, off event, total) <- event rates formatting
@@ -80,7 +84,7 @@ if __name__ == '__main__':
     calc_std = np.std(time_series[:, 2])
     calc_mean = np.mean(time_series[:, 2])
     delete_indices = np.where(time_series[:, 2] > calc_std*std_multiplier)[0]
-
+    print(calc_mean, calc_std, 0.1*calc_std)
     final_deleted_indices = np.array([], dtype=int)
 
     for i in delete_indices:
@@ -93,45 +97,6 @@ if __name__ == '__main__':
         for line in filtered_data:
             f.write(str(" ".join([str(x) for x in line])))
             f.write("\n")
-
-    # # HOW TO SAVE NUMPY FILE TO TEXT
-    # np.savetxt('test.txt', data, fmt='%s', delimiter=' ')
-
-
-    # ORIGINAL IDEA
-    # # WINDOWING COMMENCE
-    # # parameters
-    # sliding_window_length = 10
-    # percentile_threshold = 80
-
-    # window = np.array(np.zeros(sliding_window_length))
-    # cumulative_std = np.array([])
-    # on_cumulative_std = np.array([])
-    # off_cumulative_std = np.array([])
-
-    # # (on event, off event, total) <- event rates formatting
-    # start_index = 0
-    # while True:
-    #     # check if windowing has reached end of the array
-    #     if start_index + sliding_window_length >= np.shape(time_series)[0]:
-    #         cumulative_std = np.append(cumulative_std, np.std(time_series[start_index:, 2]))
-            
-    #         break
-        
-    #     cumulative_std = np.append(cumulative_std, np.std(time_series[start_index:start_index+sliding_window_length, 2]))
-    #     start_index = start_index + sliding_window_length
-
-    # print(cumulative_std)
-
-    # # plot the histogram of standard deviations
-    # plt.hist(cumulative_std, bins='auto')
-    # plt.show()
-
-    # # calculate max standard deviations in list
-    # thresh = np.percentile(cumulative_std, percentile_threshold)
-    # locations = np.where(cumulative_std >= thresh)
-
-    # for ind in locations:
 
 
 
