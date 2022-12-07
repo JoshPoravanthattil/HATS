@@ -38,10 +38,7 @@ if __name__ == '__main__':
     off_event_count = 0
     on_event_count_total = 0
     off_event_count_total = 0
-<<<<<<< HEAD
     std_multiplier = 0.1
-=======
->>>>>>> a2b03500902a0023e3327eb33607e7281759abe2
 
     numvars = 3
     # (on event, off event, total) <- event rates formatting
