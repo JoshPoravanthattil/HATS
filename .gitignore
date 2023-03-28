@@ -137,3 +137,4 @@ datasets/Test/
 datasets/Train/
 datasets/a.out
 HATStest
+*.Identifier
